@@ -29,3 +29,10 @@ def menu(request):
         "menu" : menu_data
     }
     return render(request, 'menu.html', main_data)
+
+def display_menu_items(request, pk):
+    if pk is not None:
+        menu_item = Menu.objects.get(pk=pk)
+    else:
+        menu_item =  ""
+    return render(request, 'menu_item.html', {"menu_item":menu_item})
